@@ -18,8 +18,7 @@ body {
 header {
   width: 100%;
   text-align: center;
-  padding: 2.5rem;
-  font-size: 1.5rem;
+  padding: 2rem;
 }
 
 main {
@@ -28,7 +27,12 @@ main {
   padding: 0 1rem 2rem 1rem;
 }
 
+.spacer {
+  height: calc((100vh - 706px) / 2);
+}
+
 .bingo-board-settings {
+  margin-top: 0.25rem;
   height: 6rem;
 }
 
@@ -44,19 +48,19 @@ button {
   font-weight: 600;
 }
 
+button:hover {
+  background-color: #f46200;
+}
+
+button:active {
+  scale: 0.9;
+}
+
 .button-div {
   width: 20%;
   height: 5.5rem;
   display: inline-block;
   margin: 0;
-}
-
-.bingo-board-settings button {
-}
-
-.bingo-board-settings button:active {
-  background-color: rgb(215, 215, 215);
-  scale: 0.9;
 }
 
 #new-game-button {
@@ -80,20 +84,19 @@ button {
   width: 50%;
   font-weight: 600;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
   padding: 0.8rem;
   display: inline-block;
 }
 
 .bingo-board {
-  padding: 0 2rem 2rem 2rem;
+  padding: 0 1rem 2rem 1rem;
   width: 45%;
   display: inline-block;
   vertical-align: middle;
 }
 
 .tabellone {
-  margin-top: 2.5rem;
   padding: 1rem;
 }
 
@@ -115,6 +118,7 @@ button {
 
 .bingo-board td {
   height: 3rem;
+  width: 3rem;
   font-size: 1.35rem;
   font-weight: 600;
   border: 1px solid #ff761b;
@@ -142,25 +146,26 @@ button {
 }
 
 .player-board {
-  width: 45%;
+  width: 54%;
   display: inline-block;
   vertical-align: top;
-  padding: 0 2rem 2rem;
+  padding: 0 1rem 1rem;
   text-align: center;
 }
 
 .player-card-settings {
-  height: 6rem;
-  padding: 0.25rem 0;
+  padding: 0 0 0.5rem 0;
 }
 
 .player-card-settings input {
   text-align: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 1rem;
-  margin: 0 1rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 2rem;
   border: 3px solid #ff761b;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 0.25rem;
 }
 
 .player-card-settings input::placeholder {
@@ -181,17 +186,21 @@ input {
 }
 
 .player-cards {
-  padding-top: 2.5rem;
+  width: 100%;
+}
+
+.player-cards .player-card:nth-child(odd) {
+  margin-right: 0.5rem;
 }
 
 .player-card {
-  padding-top: 1rem;
-  width: 100%;
+  padding-top: 0.25rem;
+  display: inline-block;
 }
 
 .player-card table {
-  width: 100%;
   border-collapse: collapse;
+  width: 100%;
 }
 
 .player-card h3 {
@@ -206,6 +215,25 @@ input {
 }
 
 .player-card td {
-  height: 2rem;
+  height: 2.24rem;
+  width: 3.8rem;
   border: 1px solid #ff761b;
+}
+
+.player-extracted-number {
+  text-decoration: line-through;
+}
+
+.cinquina {
+  background-color: #ff761b;
+}
+
+.tombola {
+  color: white;
+  font-weight: 600;
+}
+
+.tombola td {
+  border-color: green;
+  background-color: green;
 }

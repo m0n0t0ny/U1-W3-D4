@@ -4,30 +4,39 @@ const resetGame = () => {
   );
   extractedElements.forEach((element) => {
     element.classList.remove("board-extracted-number");
+    element.classList.remove("called");
   });
+  numbersExtracted = [];
 };
 
-// * creazione un contenitore per i numeri estratti
-const numbersExtracted = [];
+let numbersExtracted = [];
 
-// * generazione un numero randomico 0-90
 const getRandomNumber = () => {
-  return Math.ceil(Math.random() * 90);
+  let randomNum;
+  do {
+    randomNum = Math.ceil(Math.random() * 90);
+  } while (numbersExtracted.includes(randomNum));
+  return randomNum;
 };
 
-// * dichiarazione del bottone nuova partita
 const newGameButton = document.querySelector("#new-game-button");
-
-// * dichiarazione del bottone estrai numero
 const extractNewNumber = document.querySelector("#extract-new-number");
-
-// * dichiarazione il nome della cella del cartellone
 const boardNumber = document.querySelectorAll("bingo-board td");
 
-//* messa in ascolto il bottone estrai numero per mostrare il numero estratto
 extractNewNumber.addEventListener("click", () => {
   const randomNumber = getRandomNumber();
   const newNumber = document.querySelector("#new-extracted-number");
+  const playerCards = document.querySelectorAll(".player-card");
+  playerCards.forEach((playerCard) => {
+    const playerCardNumbers = playerCard.querySelectorAll("td");
+    playerCardNumbers.forEach((td) => {
+      const number = parseInt(td.textContent);
+      if (number === randomNumber) {
+        td.classList.add("player-extracted-number");
+        td.classList.add("called");
+      }
+    });
+  });
   if (!numbersExtracted.includes(randomNumber)) {
     newNumber.innerHTML = randomNumber;
     numbersExtracted.push(randomNumber);
@@ -35,55 +44,90 @@ extractNewNumber.addEventListener("click", () => {
       const boardTd = document.querySelector(`.board-number-${number}`);
       if (boardTd) {
         boardTd.classList.add("board-extracted-number");
+        boardTd.classList.add("called");
       }
     });
+
+    checkForBingoBoardCinquina();
   }
+
+  playerCards.forEach((playerCard) => {
+    const playerCardRows = playerCard.querySelectorAll("tr");
+    playerCardRows.forEach((row) => {
+      if (areAllTDCalled(row)) {
+        row.classList.add("cinquina");
+        console.log("Cinquina!");
+      }
+    });
+
+    if (areAllRowsCinquina(playerCard)) {
+      playerCard.classList.add("tombola");
+    }
+  });
 });
+
+function areAllTDCalled(row) {
+  const tds = row.querySelectorAll("td");
+  for (const td of tds) {
+    if (!td.classList.contains("called")) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function areAllRowsCinquina(playerCard) {
+  const rows = playerCard.querySelectorAll("tr.cinquina");
+  return rows.length === 3;
+}
+
+function checkForBingoBoardCinquina() {
+  const bingoBoardRows = document.querySelectorAll("bingo-board tr");
+  bingoBoardRows.forEach((row) => {
+    if (areAtLeast5TDCalled(row)) {
+      console.log("Cinquina!");
+    }
+  });
+}
 
 newGameButton.addEventListener("click", resetGame);
 
-document
-  .getElementById("generate-player-cards")
-  .addEventListener("click", function () {
-    const numberOfCards = parseInt(
-      document.getElementById("number-of-cards").value
-    );
-    const container = document.querySelector(".player-cards");
+document.getElementById("generate-player-cards");
+newGameButton.addEventListener("click", function () {
+  const numberOfCards = parseInt(
+    document.getElementById("number-of-cards").value
+  );
+  const container = document.querySelector(".player-cards");
 
-    function generateRandomNumbers(count) {
-      const numbers = [];
-      while (numbers.length < count) {
-        const randomNum = Math.floor(Math.random() * 90) + 1;
-        if (!numbers.includes(randomNum)) {
-          numbers.push(randomNum);
-        }
+  container.innerHTML = "";
+
+  for (let i = 0; i < numberOfCards; i++) {
+    const playerCard = document.createElement("div");
+    playerCard.className = "player-card";
+
+    const table = document.createElement("table");
+    const tbody = document.createElement("tbody");
+
+    const numbersInCard = [];
+
+    for (let row = 0; row < 3; row++) {
+      const tr = document.createElement("tr");
+      for (let col = 0; col < 5; col++) {
+        const td = document.createElement("td");
+        let currentNumber;
+        do {
+          currentNumber = getRandomNumber();
+        } while (numbersInCard.includes(currentNumber));
+        numbersInCard.push(currentNumber);
+        td.textContent = currentNumber;
+        td.classList.add("card-number-" + currentNumber);
+        tr.appendChild(td);
       }
-      return numbers;
+      tbody.appendChild(tr);
     }
 
-    container.innerHTML = "";
-
-    for (let i = 0; i < numberOfCards; i++) {
-      const playerCard = document.createElement("div");
-      playerCard.className = "player-card";
-
-      const table = document.createElement("table");
-      const tbody = document.createElement("tbody");
-
-      for (let row = 0; row < 3; row++) {
-        const tr = document.createElement("tr");
-        for (let col = 0; col < 5; col++) {
-          const td = document.createElement("td");
-          const numbers = generateRandomNumbers(15);
-          td.textContent = numbers[col + row * 5];
-          td.classList.add("card-number-" + numbers[col + row * 5]);
-          tr.appendChild(td);
-        }
-        tbody.appendChild(tr);
-      }
-
-      table.appendChild(tbody);
-      playerCard.appendChild(table);
-      container.appendChild(playerCard);
-    }
-  });
+    table.appendChild(tbody);
+    playerCard.appendChild(table);
+    container.appendChild(playerCard);
+  }
+});
