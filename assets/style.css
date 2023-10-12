@@ -1,0 +1,142 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  width: 100%;
+}
+
+body {
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
+  font-size: 2rem;
+}
+
+main {
+  width: 100%;
+  text-align: center;
+  padding: 0 1rem 2rem 1rem;
+}
+
+.bingo-board-settings {
+  height: 6rem;
+}
+
+.button-div {
+  width: 20%;
+  height: 5.5rem;
+  display: inline-block;
+  margin: 0;
+}
+
+.bingo-board-settings button {
+  border: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: white;
+}
+
+.bingo-board-settings button:active {
+  background-color: rgb(215, 215, 215);
+  scale: 0.9;
+}
+
+#new-game-button {
+  background-color: #f44336;
+}
+
+#extract-new-number {
+  background-color: #4caf50;
+}
+
+#new-extracted-number {
+  background-image: url(./img/numeretto.png);
+  background-size: contain;
+  font-family: "Besley", serif;
+  color: rgb(225, 0, 0);
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 50%;
+  font-weight: 600;
+  text-align: center;
+  font-size: 3rem;
+  padding: 0.8rem;
+  display: inline-block;
+}
+
+.bingo-board {
+  padding: 1rem;
+  width: 45%;
+  display: inline-block;
+}
+
+.bingo-board table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bingo-board h3 {
+  font-size: 2rem;
+  margin: 2rem;
+}
+
+.bingo-board td {
+  height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border: 1px solid black;
+}
+
+.board-extracted-number {
+  background-image: url(./img/numeretto.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "Young Serif", serif;
+  color: rgb(225, 0, 0);
+}
+
+.player-board {
+  width: 45%;
+  display: inline-block;
+  padding: 1rem;
+}
+
+.player-card-settings {
+}
+
+.player-card-settings label {
+}
+
+.player-card-settings input {
+}
+
+.player-cards {
+}
+
+.player-card {
+}
+
+.player-card table {
+}
+
+.player-card tbody {
+}
+
+.player-card tr {
+}
+
+.player-card td {
+}
