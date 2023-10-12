@@ -18,8 +18,8 @@ body {
 header {
   width: 100%;
   text-align: center;
-  padding: 2rem;
-  font-size: 2rem;
+  padding: 2.5rem;
+  font-size: 1.5rem;
 }
 
 main {
@@ -32,6 +32,18 @@ main {
   height: 6rem;
 }
 
+button {
+  border: 0;
+  line-height: 1.3;
+  cursor: pointer;
+  background-color: #ff761b;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 .button-div {
   width: 20%;
   height: 5.5rem;
@@ -40,12 +52,6 @@ main {
 }
 
 .bingo-board-settings button {
-  border: 0;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 800;
-  color: white;
 }
 
 .bingo-board-settings button:active {
@@ -54,14 +60,17 @@ main {
 }
 
 #new-game-button {
-  background-color: #f44336;
+  /* background-color: #f44336; */
+  vertical-align: middle;
 }
 
 #extract-new-number {
-  background-color: #4caf50;
+  /* background-color: #4caf50; */
+  vertical-align: middle;
 }
 
 #new-extracted-number {
+  vertical-align: middle;
   background-image: url(./img/numeretto.png);
   background-size: contain;
   font-family: "Besley", serif;
@@ -77,9 +86,10 @@ main {
 }
 
 .bingo-board {
-  padding: 2rem;
+  padding: 0 2rem 2rem 2rem;
   width: 45%;
   display: inline-block;
+  vertical-align: middle;
 }
 
 .tabellone {
@@ -105,7 +115,7 @@ main {
 
 .bingo-board td {
   height: 3rem;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 600;
   border: 1px solid #ff761b;
 }
@@ -127,31 +137,55 @@ main {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: "Young Serif", serif;
+  font-family: "Besley", serif;
   color: rgb(225, 0, 0);
 }
 
 .player-board {
   width: 45%;
   display: inline-block;
-  padding: 2rem;
+  vertical-align: top;
+  padding: 0 2rem 2rem;
   text-align: center;
 }
 
 .player-card-settings {
-  padding: 1rem 0;
-}
-
-.player-card-settings label {
+  height: 6rem;
+  padding: 0.25rem 0;
 }
 
 .player-card-settings input {
+  text-align: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
+  margin: 0 1rem;
+  border: 3px solid #ff761b;
+}
+
+.player-card-settings input::placeholder {
+  text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input {
+  -moz-appearance: textfield;
+}
+
+.player-card-settings button {
+  margin-top: 1rem;
 }
 
 .player-cards {
+  padding-top: 2.5rem;
 }
 
 .player-card {
+  padding-top: 1rem;
   width: 100%;
 }
 
