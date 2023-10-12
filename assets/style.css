@@ -77,9 +77,14 @@ main {
 }
 
 .bingo-board {
-  padding: 1rem;
+  padding: 2rem;
   width: 45%;
   display: inline-block;
+}
+
+.tabellone {
+  margin-top: 2.5rem;
+  padding: 1rem;
 }
 
 .bingo-board table {
@@ -89,14 +94,32 @@ main {
 
 .bingo-board h3 {
   font-size: 2rem;
-  margin: 2rem;
+  padding: 1rem 0;
+  border: 3px solid #ff761b;
+  border-bottom: 0;
+}
+
+.bingo-board tbody {
+  border: 3px solid #ff761b;
 }
 
 .bingo-board td {
   height: 3rem;
   font-size: 1.5rem;
   font-weight: 600;
-  border: 1px solid black;
+  border: 1px solid #ff761b;
+}
+
+.bingo-board tr:nth-child(3) {
+  border-bottom: 3px solid #ff761b;
+}
+
+.bingo-board tr:nth-child(6) {
+  border-bottom: 3px solid #ff761b;
+}
+
+.bingo-board td:nth-child(5) {
+  border-right: 3px solid #ff761b;
 }
 
 .board-extracted-number {
@@ -111,10 +134,12 @@ main {
 .player-board {
   width: 45%;
   display: inline-block;
-  padding: 1rem;
+  padding: 2rem;
+  text-align: center;
 }
 
 .player-card-settings {
+  padding: 1rem 0;
 }
 
 .player-card-settings label {
@@ -127,16 +152,26 @@ main {
 }
 
 .player-card {
+  width: 100%;
 }
 
 .player-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.player-card h3 {
+  font-size: 0.75rem;
+  padding: 0.25rem 0;
+  border: 3px solid #ff761b;
+  border-bottom: 0;
 }
 
 .player-card tbody {
-}
-
-.player-card tr {
+  border: 3px solid #ff761b;
 }
 
 .player-card td {
+  height: 2rem;
+  border: 1px solid #ff761b;
 }
